@@ -33,8 +33,16 @@ public class WhileLoopFun {
      try it this time using a while loop!
      */
    public int countLetter(String word, String letter) {
-
-    }
+       int counter = 0;
+       String a = word;
+       int index;
+       while (a.indexOf(letter) != -1) {
+           counter++;
+           index = a.indexOf(letter);
+           a = a.substring(0, index) + a.substring(index + 1);
+       }
+       return counter;
+   }
 
     /**Returns the maximum number of times that number can be doubled before it exceeds threshold
      Example:  If number is 4 and threshold is 20, return 2, since 4 can be doubled a maximum of two
@@ -78,9 +86,34 @@ public class WhileLoopFun {
      * 1 is considered non-prime because prime numbers have exactly two divisors - the number and itself -
      but 1 has only a single divisor! (don’t believe it? Google it!)
      */
-    public boolean isPrime(int number) {
 
+    public boolean isPrime(int number) {
+        int divisor = number;
+        double decimal = (double)number / divisor;
+        int integer = number / divisor;
+        int counter = 0;
+        while (counter<2) {
+            if (integer==decimal){
+                counter++;
+                divisor--;
+            }else{
+                divisor--;
+            }
+            if (divisor>0) {
+                integer = number / divisor;
+                decimal = (double)number / divisor;
+            }else{
+                divisor++;
+            }
         }
+
+
+            if (integer == decimal&&(integer!=1&&decimal!=1.0)) {
+                return true;
+            } else {
+                return false;
+            }
+
     }
 }
 
